@@ -11,4 +11,4 @@ Rules of this automaton describe with the help of regex and keep in the variable
 
 Also in the project there are various settings, such as the first generation fill area, cell sizes, edge wrapping, various templates, as well as a regular expression parser, by which you can change the rules of the game.
 
-![Вид окна игры](http://example.com/ "Игра Жизнь")
+![Вид окна игры](http://example.com/](https://github.com/Dezodorant31/Game-Life/blob/main/Screenshot_1.png "Игра Жизнь")
