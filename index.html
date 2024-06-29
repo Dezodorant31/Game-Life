@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра Жизнь</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	 <h1>Игра Жизнь</h1>
+    <div class="container">
+		<div id="gameContainer">
+			<canvas id="gameCanvas"></canvas>
+		</div>
+        <div class="controls">
+			<div>
+				<button id="startStopBtn">Старт</button>
+			</div>
+			<div>
+				<button id="stepBtn">Шаг</button>
+			</div>
+			<div>
+				<button id="clearBtn">Очистить</button>
+			</div>
+			<div>
+				<button id="resetBtn">Сброс</button>
+			</div>
+			<div>
+				<button id="randomBtn">Случайное заполнение</button>
+			</div>
+			<div>
+				<label for="cellSize">Размер клеток:</label>
+				<input type="number" id="cellSize" value="10" min="5" max="20">
+			</div>
+			<div>
+				<label for="wrapCheckbox">Обертывание по краям:</label>
+				<input type="checkbox" id="wrapCheckbox">
+			</div>
+			<div>
+				<label for="speedSlider">Задержка:</label>
+				<input type="range" id="speedSlider" min="0.1" max="2" step="0.1" value="0.5">
+				<span id="speedValue">0.5</span> секунд
+			</div>
+			<div>
+				<label for="interactionCheckbox"> Взаимодействие с миром</label>
+				<input type="checkbox" id="interactionCheckbox" checked>
+			</div>
+			<div>
+				<label for="fillRadiusSlider">Радиус заполнения/очистки:</label>
+				<input type="range" id="fillRadiusSlider" min="0" max="10" value="0">
+				<span id="fillRadiusValue">0</span> клеток
+			</div>
+			<div>
+				<label>Форма заполнения/очистки:</label>
+				<label><input type="radio" name="fillShape" value="circle" checked> Круг</label>
+				<label><input type="radio" name="fillShape" value="square"> Квадрат</label>
+				<label><input type="radio" name="fillShape" value="pattern"> Шаблон</label>
+			</div>
+			<div>
+				<select id="patternSelector">
+					 <optgroup label="Устойчивые фигуры">
+						<option value="block">Блок</option>
+						<option value="beehive">Улей</option>
+						<option value="loaf">Каравай</option>
+						<option value="boat">Лодка</option>
+						<option value="tub">Пруд</option>
+						<!-- Добавьте остальные устойчивые фигуры здесь -->
+					</optgroup>
+					<optgroup label="Периодические фигуры">
+						<option value="blinker">Мигалка</option>
+						<option value="toad">Жаба</option>
+						<option value="beacon">Маяк</option>
+						<option value="pulsar">Пульсар</option>
+
+						<!-- Добавьте остальные периодические фигуры здесь -->
+					</optgroup>
+					<optgroup label="Двигающиеся фигуры">
+						<option value="glider">Глайдер</option>
+						<!-- Добавьте остальные двигающиеся фигуры здесь -->
+					</optgroup>
+					<optgroup label="Ружья">
+						<option value="gosperGliderGun">Ружьё Госпера</option>
+						<!-- Добавьте остальные ружья здесь -->
+					</optgroup>
+				</select>
+			</div>
+			<div>
+				<label for="pattern">Введите шаблон:</label>
+				<input type="text" id="pattern" value="R1/C2/M8/S2..3/B3..3/NM">
+				<button id="parsePatternBtn">Парсить</button>
+			</div>
+        </div>
+		<p id="result"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

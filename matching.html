@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of Life Parser</title>
+</head>
+<body>
+    <h1>Game of Life Parser</h1>
+    <label for="pattern">Enter Pattern (e.g., R1,C2,M8,S2..3,B3..3,NM):</label>
+    <input type="text" id="pattern" value="R1,C2,M8,S2..3,B3..3,NM">
+    <button onclick="parsePattern()">Parse</button>
+    <p id="result"></p>
+
+    <script>
+        function parsePattern() {
+            const pattern = document.getElementById("pattern").value;
+            const resultElement = document.getElementById("result");
+
+            const regex = /R(\d+),C(\d+),M(\d+),S(\d+)\.\.(\d+),B(\d+)\.\.(\d+),N(\w+)/;
+            const match = pattern.match(regex);
+
+            if (match) {
+                const [_, R, C, M, Smin, Smax, Bmin, Bmax, N] = match;
+                
+                const gameOfLifeParams = {
+                    R: R,
+                    C: C,
+                    M: M,
+                    S: `${Smin}..${Smax}`,
+                    B: `${Bmin}..${Bmax}`,
+                    N: N
+                };
+
+                resultElement.innerHTML = `
+                    <strong>Parsed Parameters:</strong><br>
+                    Radius (R): ${gameOfLifeParams.R}<br>
+                    States (C): ${gameOfLifeParams.C}<br>
+                    Max Neighbors (M): ${gameOfLifeParams.M}<br>
+                    Survival Range (S): ${gameOfLifeParams.S}<br>
+                    Birth Range (B): ${gameOfLifeParams.B}<br>
+                    Neighborhood (N): ${gameOfLifeParams.N}
+                `;
+            } else {
+                resultElement.innerHTML = "Invalid pattern format!";
+            }
+        }
+    </script>
+</body>
+</html>
